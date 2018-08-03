@@ -6,21 +6,12 @@ const bodyparser =  require('body-parser');
 const fs = require('fs');
 const app = express();
 const http = require('http');
-const appConfig =  {
-port:3000,
-allowedCorsOrigin : "*",
-env : "dev",
-db : {
-    uri : "mongodb://127.0.0.1:27017/tea1"
-}
-}
-
+const appConfig =  require('./config/appConfig');
 const logger = require('./app/libs/loggerLib');
 const routeLoggerMiddleware = require('./app/middlewares/routeLogger.js');
 const globalErrorMiddleware = require('./app/middlewares/appErrorHandler');
 const mongoose = require('mongoose');
 const eventCheck = require('./app/libs/eventCheckerLib')
-
 // using all middlewares
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
