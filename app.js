@@ -12,6 +12,8 @@ const routeLoggerMiddleware = require('./app/middlewares/routeLogger.js');
 const globalErrorMiddleware = require('./app/middlewares/appErrorHandler');
 const mongoose = require('mongoose');
 const eventCheck = require('./app/libs/eventCheckerLib')
+config = require('./config/appconfig');
+
 // using all middlewares
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
