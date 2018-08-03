@@ -6,13 +6,12 @@ const bodyparser =  require('body-parser');
 const fs = require('fs');
 const app = express();
 const http = require('http');
-const appConfig =  require('./app/config/appConfig.js');
+const appConfig =  require('/home/ubuntu/my-planner-backend/config/appconfig.js');
 const logger = require('./app/libs/loggerLib');
 const routeLoggerMiddleware = require('./app/middlewares/routeLogger.js');
 const globalErrorMiddleware = require('./app/middlewares/appErrorHandler');
 const mongoose = require('mongoose');
 const eventCheck = require('./app/libs/eventCheckerLib')
-config = require('./config/appconfig');
 
 // using all middlewares
 app.use(bodyparser.json());
