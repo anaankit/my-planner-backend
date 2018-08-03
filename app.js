@@ -7,10 +7,10 @@ const fs = require('fs');
 const app = express();
 const http = require('http');
 const appConfig =  {
-port = 3000,
-allowedCorsOrigin = "*",
-env = "dev",
-db = {
+port:3000,
+allowedCorsOrigin : "*",
+env : "dev",
+db : {
     uri : "mongodb://127.0.0.1:27017/tea1"
 }
 }
