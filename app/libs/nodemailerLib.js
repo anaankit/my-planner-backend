@@ -1,5 +1,4 @@
 'use strict';
-const config = require('../config/appConfig')
 const nodemailer = require('nodemailer');
 
 
