@@ -18,7 +18,7 @@ const authModel = mongoose.model('Auth');
 const userModel = mongoose.model('User');
 const eventModel = mongoose.model('Event');
 const nodeMailer = require('../libs/nodemailerLib')
-const moment = require('moment')
+// const mommnt = require('moment')
 
 
 let check = () =>{
@@ -27,14 +27,14 @@ eventModel.find()
 
     for(let each of result){
         
-      if(moment(each.start).format('MM')==moment().format('MM')){
+      if(time.convertToLocalTime(each.start).format('MM')==time.convertToLocalTime().format('MM')){
 
-        if(moment(each.start).format('DD')==moment().format('DD')){
+        if(time.convertToLocalTime(each.start).format('DD')==time.convertToLocalTime().format('DD')){
 
-          if(moment(each.start).format('HH')==moment().format('HH')){
+          if(time.convertToLocalTime(each.start).format('HH')==time.convertToLocalTime().format('HH')){
 
-            let a = parseInt(moment(each.start).format('mm'))
-             let b = parseInt(moment().format('mm'));
+            let a = parseInt(time.convertToLocalTime(each.start).format('mm'))
+             let b = parseInt(time.convertToLocalTime().format('mm'));
              
              if((a-b)==1){
     
