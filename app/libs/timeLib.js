@@ -11,7 +11,7 @@ let getLocalTime = () => {
 
 
 let convertToLocalTime = (time) => {
-  return momenttz.tz(time, timeZone).format('LLLL')
+  return momenttz.tz(time, timeZone).format()
 }
 module.exports = {
   now: now,

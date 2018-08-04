@@ -19,30 +19,30 @@ const userModel = mongoose.model('User');
 const eventModel = mongoose.model('Event');
 const nodeMailer = require('../libs/nodemailerLib')
 const moment = require('moment')
-
+const timeLib = require('../libs/timeLib')
 
 
 let check = () =>{
-console.log(moment().format() + ' '+' moment time here');
-console.log(time.now()+ ' '+'js time here')
+  
+  console.log(timeLib.convertToLocalTime(time.now()))
 
 eventModel.find()
 .exec((err,result)=>{
  
 
-  let year = time.now();
+  let year = timeLib.convertToLocalTime(time.now());
   year = year.slice(0,4);
 
- let month = time.now();
+ let month = timeLib.convertToLocalTime(time.now())
    month = month.slice(6,7);
 
-  let day = time.now();
+  let day = timeLib.convertToLocalTime(time.now())
   day=day.slice(9,10);
 
-  let hour =  moment().format()
+  let hour =  timeLib.convertToLocalTime(time.now())
   hour = hour.slice(11,13);
 
-  let minute = moment().format()
+  let minute = timeLib.convertToLocalTime(time.now())
   minute = minute.slice(14,16);
 
   for (let each of result){
