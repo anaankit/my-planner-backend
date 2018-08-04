@@ -18,20 +18,51 @@ const authModel = mongoose.model('Auth');
 const userModel = mongoose.model('User');
 const eventModel = mongoose.model('Event');
 const nodeMailer = require('../libs/nodemailerLib')
-// const mommnt = require('moment')
+const moment = require('moment')
+
 
 
 let check = () =>{
 eventModel.find()
 .exec((err,result)=>{
+  console.log(result);
+
+  let year = time.now();
+  year = year.slice(0,4);
+
+ let month = time.now();
+   month = month.slice(6,7);
+
+  let day = time.now();
+  day=day.slice(9,10);
+
+  let hour =  moment().format()
+  hour = hour.slice(11,13);
+
+  let minute = moment().format()
+  minute = minute.slice(14,16);
 
   for (let each of result){
+    
+      if(year  == each.start.slice(0,4)){
 
-    if( ( Date.parse('each.start') - Date.parse(`${time.now()}`) ) == 1 ){
+        if(month == each.start.slice(6,7)){
 
-      userModel.find({userId:each.userId})
+         if(day == each.start.slice(9,10)){
+            
+
+          if(hour == each.start.slice(11,13)){
+            
+            let  a = each.start.slice(14,16);
+              a = parseInt(a);
+
+             let b = parseInt(minute);
+
+              if(a-b == 1){
+
+                userModel.find({userId:each.userId})
                 .exec((err,result1)=>{
-                    console.log(result1);
+                   
                     let mailDetails = {
                         receiver:result1[0].email,
                         subject:'Event Schdule remainder',
@@ -43,10 +74,27 @@ eventModel.find()
 
                 })
 
-    }
+              }
 
+          }
+         
+            
+         }
+
+        }
+
+      } 
     
   }
+
+})
+
+setTimeout(() => {
+  check();
+}, 10000);
+
+}
+
 
 
     // for(let each of result){
@@ -84,13 +132,6 @@ eventModel.find()
     //   }
     // }
 
-})
-
-setTimeout(() => {
-    check();
-}, 55000);
-
-}
 
 
 module.exports = {
