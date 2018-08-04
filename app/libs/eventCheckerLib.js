@@ -25,20 +25,11 @@ let check = () =>{
 eventModel.find()
 .exec((err,result)=>{
 
-    for(let each of result){
-        
-      if(time.convertToLocalTime(each.start).format('MM')==time.convertToLocalTime().format('MM')){
+  for (let each of result){
 
-        if(time.convertToLocalTime(each.start).format('DD')==time.convertToLocalTime().format('DD')){
+    if( ( Date.parse('each.start') - Date.parse(`${new Date()}`) ) == 1 ){
 
-          if(time.convertToLocalTime(each.start).format('HH')==time.convertToLocalTime().format('HH')){
-
-            let a = parseInt(time.convertToLocalTime(each.start).format('mm'))
-             let b = parseInt(time.convertToLocalTime().format('mm'));
-             
-             if((a-b)==1){
-    
-                userModel.find({userId:each.userId})
+      userModel.find({userId:each.userId})
                 .exec((err,result1)=>{
                     console.log(result1);
                     let mailDetails = {
@@ -51,20 +42,54 @@ eventModel.find()
                                 
 
                 })
-    
-             }
-          }
 
-        }
-
-      }
     }
+
+    
+  }
+
+
+    // for(let each of result){
+        
+    //   if(moment(each.start).format('MM')==moment().format('MM')){
+
+    //     if(moment(each.start).format('DD')==moment().format('DD')){
+
+    //       if(moment(each.start).format('HH')==moment().format('HH')){
+
+    //         let a = parseInt(moment(each.start).format('mm'))
+    //          let b = parseInt(moment().format('mm'));
+             
+    //          if((a-b)==1){
+    
+    //             userModel.find({userId:each.userId})
+    //             .exec((err,result1)=>{
+    //                 console.log(result1);
+    //                 let mailDetails = {
+    //                     receiver:result1[0].email,
+    //                     subject:'Event Schdule remainder',
+    //                     html:`<p>Hi,</p><p>You Have an Event scheduled in 1 minute</p><h4>${each.title}</h4><br><p>${each.start}</p><br><p>TO</p><br><p>${each.end}</p>`
+    //                   }
+                  
+    //                   nodeMailer.sendMail(mailDetails);
+                                
+
+    //             })
+    
+    //          }
+    //       }
+
+    //     }
+
+    //   }
+    // }
 
 })
 
 setTimeout(() => {
     check();
 }, 55000);
+
 }
 
 
