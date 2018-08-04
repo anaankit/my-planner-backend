@@ -94,7 +94,7 @@ eventModel.find()
 
 setTimeout(() => {
   check();
-}, 10000);
+}, 45000);
 
 }
 
