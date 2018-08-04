@@ -23,9 +23,12 @@ const moment = require('moment')
 
 
 let check = () =>{
+console.log(moment().format() + ' '+' moment time here');
+console.log(time.now()+ ' '+'js time here')
+
 eventModel.find()
 .exec((err,result)=>{
-  console.log(result);
+ 
 
   let year = time.now();
   year = year.slice(0,4);
@@ -43,7 +46,7 @@ eventModel.find()
   minute = minute.slice(14,16);
 
   for (let each of result){
-    
+
       if(year  == each.start.slice(0,4)){
 
         if(month == each.start.slice(6,7)){
