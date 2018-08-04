@@ -27,8 +27,8 @@ let addEvent = (req,res) =>{
 
         id:shortId.generate(),
         userId:req.body.userId,
-        start:new Date(req.body.start),
-        end:new Date(req.body.end),
+        start:req.body.start,
+        end:req.body.end,
         title:req.body.title,
         color:req.body.color,
         where:req.body.where,
