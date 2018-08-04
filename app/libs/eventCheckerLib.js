@@ -27,7 +27,7 @@ eventModel.find()
 
   for (let each of result){
 
-    if( ( Date.parse('each.start') - Date.parse(`${new Date()}`) ) == 1 ){
+    if( ( Date.parse('each.start') - Date.parse(`${time.now()}`) ) == 1 ){
 
       userModel.find({userId:each.userId})
                 .exec((err,result1)=>{
